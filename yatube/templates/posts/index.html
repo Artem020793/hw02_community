@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{ title }}
+{% endblock %}  
+{% block content %}
+  <div class="container py-5">
+    {% for post in posts %}
+      {% include 'posts/post_place.html' with x=True %}
+    {% endfor %}
+  </div>  
+{% endblock %}
