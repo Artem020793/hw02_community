@@ -1,16 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}
-  <title> Записи сообщества </title>
-{% endblock %}
+{% block title %}Записи сообщества {{ post.group.title }} {% endblock %}
 {% block content %}
-<div class="container py-5">
   <h1>{{ group.title }}</h1>
-    <p>
-      {{ group.description }}
-    </p>
-{% for post in posts %}
+    <p>{{ group.description }}</p>
+  {% for post in posts %}
   {% include 'posts/post_place.html' %}
-{% endfor %} 
-</div>
-{% if not forloop.last %}<hr>{% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %} 
 {% endblock %}
