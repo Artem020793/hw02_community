@@ -4,7 +4,7 @@ from django.conf import settings
 
 
 def index(request):
-    posts = Post.objects.order_by('-pub_date')[:settings.POSTS_SHOWN]
+    posts = Post.objects.all()[:settings.POSTS_SHOWN]
     context = {
         'posts': posts,
     }
@@ -13,9 +13,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(
-        group=group
-    ).order_by('-pub_date')[:settings.POSTS_SHOWN]
+    posts = group.posts.all()[:settings.POSTS_SHOWN]
     context = {
         'group': group,
         'posts': posts,
